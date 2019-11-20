@@ -2,6 +2,9 @@
   "name": "flashback-api",
   "version": "1.0.0",
   "description": "Api for Flashback the memory game",
+  "engines": { 
+    "node": "10.16.0" 
+  },
   "main": "server.js",
   "scripts": {
     "devStart": "nodemon server.js"
