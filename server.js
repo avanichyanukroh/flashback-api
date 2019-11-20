@@ -4,7 +4,7 @@ const user = require('./routes/user');
 const score = require('./routes/score');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-require('dotenv').config();
+const { DATABASE_URL } = require('./config');
 
 const app = express();
 // const port = process.env.PORT || 3000;
@@ -20,7 +20,7 @@ app.use('/api/score', score);
 //     console.log(`http://localhost:${port}`)
 // })
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('connected to database'))
