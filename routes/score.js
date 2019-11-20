@@ -26,7 +26,7 @@ score.route('/:mode')
         res.status(201).send(newScore);
     })
 
-score.route('/:userId/:mode')
+score.route('/highScore/:userId/:mode')
     .get(async (req, res) => {
         const score = await Score.findOne({userId: req.params.userId, mode: req.params.mode});
         try {
