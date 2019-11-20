@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const user = require('./routes/user');
 const score = require('./routes/score');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use('/api/user', user);
 app.use('/api/score', score);
