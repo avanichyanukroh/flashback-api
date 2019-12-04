@@ -66,12 +66,6 @@ score.route('/highScore/:userId/:mode')
             const newScore = await score.save();
             res.status(201).send(newScore);
         }
-        // try {
-        //     res.status(201).send(score);
-        // }
-        // catch (error) {
-        //     res.status(400).json({ message: error.message });
-        // }
     })
 
 
