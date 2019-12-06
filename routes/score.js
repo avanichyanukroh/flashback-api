@@ -5,7 +5,10 @@ const score = express.Router();
 
 score.route('/:mode')
     .get(async (req, res) => {
-        const scores = await Score.find({mode: req.params.mode}).sort({score: 1});
+        const scores = await Score
+        .find({mode: req.params.mode})
+        .populate('user')
+        .sort({score: 1});
 
         try {
             res.status(201).send(scores);
@@ -16,7 +19,7 @@ score.route('/:mode')
     })
     .post(async (req, res) => {
         const newScore = new Score({
-            userId: req.body.userId,
+            user: req.body.userId,
             mode: req.body.mode,
             turn: req.body.turn,
             time: req.body.time,
@@ -28,7 +31,7 @@ score.route('/:mode')
 
 score.route('/highScore/:userId/:mode')
     .get(async (req, res) => {
-        const score = await Score.findOne({userId: req.params.userId, mode: req.params.mode});
+        const score = await Score.findOne({user: req.params.userId, mode: req.params.mode});
         try {
             res.status(201).send(score);
         }
@@ -37,7 +40,7 @@ score.route('/highScore/:userId/:mode')
         }
     })
     .post(async (req, res) => {
-        const score = await Score.findOne({userId: req.params.userId, mode: req.params.mode});
+        const score = await Score.findOne({user: req.params.userId, mode: req.params.mode});
 
         if (score) {
             score.turn = req.body.turn;
@@ -57,7 +60,7 @@ score.route('/highScore/:userId/:mode')
         }
         else {
             const score = new Score({
-                userId: req.params.userId,
+                user: req.params.userId,
                 mode: req.body.mode,
                 turn: req.body.turn,
                 time: req.body.time,
