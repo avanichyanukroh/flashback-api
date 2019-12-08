@@ -41,7 +41,7 @@ score.route('/highScore/:userId/:mode')
     })
     .post(async (req, res) => {
         const score = await Score.findOne({user: req.params.userId, mode: req.params.mode});
-
+        console.log('SCORE RESULT FOUND: ', score);
         if (score) {
             score.turn = req.body.turn;
             score.time = req.body.time;
