@@ -27,9 +27,9 @@
   "homepage": "https://github.com/avanichyanukroh/flashback-api#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "mongoose": "^5.7.8"
   },
   "devDependencies": {
